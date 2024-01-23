@@ -1,0 +1,19 @@
+services:
+   palworld:
+      image: thijsvanloef/palworld-server-docker:latest
+      restart: unless-stopped
+      container_name: palworld-server
+      ports:
+        - 8211:8211/udp
+        - 27015:27015/udp
+      environment:
+         - PUID=1000
+         - PGID=1000
+         - PORT=8211 
+         - PLAYERS=5 
+         - MULTITHREADING=false
+         - ADMIN_PASSWORD="qwer1234"
+         - COMMUNITY=false           
+         - SERVER_NAME="kimchunchuk"
+      volumes:
+         - ./palworld:/palworld/
